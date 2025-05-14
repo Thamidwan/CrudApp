@@ -17,7 +17,7 @@ A simple Flask-based web application that performs **CRUD (Create, Read, Update,
 ## ⚙️ How to Run Locally
 1. git clone https://github.com/Thamidwan/CrudApp.git
 2. cd CrudApp
-3. pip install -r requirements.txt
+3. pip install Flask==2.3.3 OR pip install -r requirements.txt
 4. python app.py     //To run the project
 5. http://127.0.0.1:5000/       open project
 
