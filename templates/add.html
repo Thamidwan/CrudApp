@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Item</title>
+    <link rel="stylesheet" href="../static/css/add.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icons/icons8-shop-30.png') }}">
+</head>
+<body>
+    <div class="welcome-heading">
+        <h1>Stock Management System</h1>
+    </div>
+
+    <div class="form-container">
+        <h2 class="page-title">Add New Item</h2>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('addItem') }}" method="POST">
+            <label>Item Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Quantity:</label>
+            <input type="number" name="quantity" required>
+
+            <label>Price (R):</label>
+            <input type="number" name="price" step="0.01" required>
+
+            <button type="submit">Add Item</button>
+        </form>
+        
+        <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>

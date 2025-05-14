@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icons/icons8-shop-30.png') }}">
+</head>
+<body>
+    <div class="welcome-heading">
+        <h1>Stock Management System</h1>
+    </div>
+
+    <div class="form-container">
+        <h2 class="page-title">Edit Item</h2>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('updateItem', item_id=item[0]) }}" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" value="{{ item[1] }}" required>
+
+            <label>Quantity:</label>
+            <input type="number" name="quantity" value="{{ item[2] }}" required>
+
+            <label>Price:</label>
+            <input type="number" step="0.01" name="price" value="{{ item[3] }}" required>
+
+            <button type="submit">Update Item</button>
+        </form>
+        
+        <a href="{{ url_for('home') }}" class="back-link">Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Application</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icons/icons8-shop-30.png') }}">
+</head>
+<body>
+
+{% block body %}
+    <div class="welcome-heading">
+        <h1>Stock Management Crud</h1>
+    </div>
+
+    <div class="container">
+
+        <div id="row">
+            <div id="col1">
+                <h2>Items List <button type="button"><a href="{{ url_for('addPage') }}">Add Item Data</a></button></h2>
+                
+                <table id="itemlist">
+                   <tr>
+                      <td>ItemNumber</td>
+                      <td>Name</td>
+                      <td>Quantity</td>
+                      <td>Price</td>
+                      <td>Edit</td>
+                      <td>Delete</td>
+                 </tr>
+
+         {% for item in items %}
+                <tr>
+                   <td>{{ item[0] }}</td>
+                   <td>{{ item[1] }}</td>
+                   <td>{{ item[2] }}</td>
+                   <td>R{{ item[3] }}</td>
+     <td>
+    <a href="{{ url_for('editItem', item_id=item[0]) }}">Edit</a>
+</td>
+<td>
+    <a href="{{ url_for('deleteItem', item_id=item[0]) }}" onclick="return confirm('Are you sure?')">Delete</a>
+</td>
+</tr>
+{% endfor %}
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+</body>
+</html>
